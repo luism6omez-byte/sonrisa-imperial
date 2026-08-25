@@ -1,22 +1,44 @@
-/* ============================================
+/* ============================================================
    Sonrisa Imperial — Landing page
-   ============================================ */
+
+   Dirección de diseño: la marca promete precio cerrado y cero
+   letra pequeña. El diseño lo cumple literalmente — no hay
+   ningún texto por debajo de 15px en toda la página, ni
+   siquiera el aviso legal.
+
+   La paleta sale de la propia foto del hero: el verde
+   quirúrgico del uniforme y el blanco frío del consultorio.
+   El único material cálido (hueso) está reservado al
+   presupuesto, para que se lea como un papel dentro de una
+   sala verde.
+   ============================================================ */
 
 :root {
-  --ink:        #12211F;
-  --ink-soft:   #4A5A57;
-  --line:       #E3E0D8;
-  --bg:         #FBFAF6;
-  --bg-alt:     #F3F1EA;
-  --deep:       #0F2B29;
-  --gold:       #B08D57;
+  /* Color */
+  --porcelain:  #F1F5F3;
   --white:      #FFFFFF;
+  --ink:        #0A1F1B;
+  --ink-soft:   #4C635E;
+  /* Verde del uniforme de la foto, oscurecido lo justo para que el
+     sello y el «Incluido» pasen AA sobre el papel hueso (5.2:1). */
+  --scrub:      #176B59;
+  --scrub-pale: #D7EDE4;
+  --deep:       #062A25;
+  --bone:       #EFE7D8;
+  --line:       #D5E0DB;
+  --alert:      #A83A2F;
 
-  --font-display: "Fraunces", Georgia, "Times New Roman", serif;
-  --font-body:    "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  /* Tipografía */
+  --font-display: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+  --font-body:    "Public Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-mono:    "IBM Plex Mono", ui-monospace, "Cascadia Mono", Consolas, monospace;
 
-  --maxw: 1120px;
-  --radius: 4px;
+  /* Suelo tipográfico: nada baja de aquí. Es la regla de la casa. */
+  --t-min:  0.9375rem;   /* 15px */
+  --t-body: 1.0625rem;   /* 17px */
+
+  --maxw: 1140px;
+  --radius: 3px;
   --ease: cubic-bezier(.22, .61, .36, 1);
 }
 
@@ -26,31 +48,35 @@ html { scroll-behavior: smooth; }
 
 body {
   margin: 0;
-  background: var(--bg);
+  background: var(--porcelain);
   color: var(--ink);
   font-family: var(--font-body);
-  font-size: 17px;
-  line-height: 1.65;
+  font-size: var(--t-body);
+  line-height: 1.6;
   -webkit-font-smoothing: antialiased;
 }
 
 img { max-width: 100%; display: block; }
-
 a { color: inherit; }
 
 h1, h2, h3 {
   font-family: var(--font-display);
-  font-weight: 500;
-  letter-spacing: -0.015em;
-  line-height: 1.12;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.08;
   margin: 0;
+  text-wrap: balance;
 }
 
-h1 { font-size: clamp(2.4rem, 5.2vw, 3.9rem); }
-h2 { font-size: clamp(1.9rem, 3.6vw, 2.7rem); }
-h3 { font-size: 1.12rem; line-height: 1.35; }
+h1 { font-size: clamp(2.35rem, 5vw, 3.75rem); }
+h2 { font-size: clamp(1.85rem, 3.4vw, 2.6rem); }
+h3 { font-size: 1.2rem; line-height: 1.3; letter-spacing: -0.01em; }
 
-h1 em, h2 em { font-style: italic; color: var(--gold); }
+h1 em, h2 em {
+  font-style: normal;
+  color: var(--scrub);
+  display: block;
+}
 
 p { margin: 0 0 1rem; }
 
@@ -61,13 +87,27 @@ p { margin: 0 0 1rem; }
   padding-inline: 24px;
 }
 
+.skip {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 100;
+  background: var(--deep);
+  color: var(--white);
+  padding: .8rem 1.2rem;
+  text-decoration: none;
+}
+.skip:focus { left: 8px; top: 8px; }
+
+/* El eyebrow va al tamaño mínimo, no a 12px. Es deliberado. */
 .eyebrow {
-  font-size: 0.75rem;
-  letter-spacing: 0.18em;
+  font-family: var(--font-mono);
+  font-size: var(--t-min);
+  letter-spacing: .08em;
   text-transform: uppercase;
-  color: var(--gold);
-  font-weight: 600;
-  margin-bottom: 1rem;
+  color: var(--scrub);
+  font-weight: 500;
+  margin-bottom: 1.1rem;
 }
 
 /* ---------- Botones ---------- */
@@ -79,23 +119,24 @@ p { margin: 0 0 1rem; }
   gap: .5rem;
   background: var(--deep);
   color: var(--white);
-  border: 1px solid var(--deep);
+  border: 1.5px solid var(--deep);
   border-radius: var(--radius);
-  padding: .7rem 1.35rem;
+  padding: .72rem 1.35rem;
   font-family: var(--font-body);
-  font-size: .93rem;
-  font-weight: 500;
-  letter-spacing: .01em;
+  font-size: var(--t-min);
+  font-weight: 600;
+  letter-spacing: .005em;
   text-decoration: none;
   cursor: pointer;
-  transition: background .25s var(--ease), color .25s var(--ease), transform .25s var(--ease);
+  transition: background .22s var(--ease), color .22s var(--ease),
+              border-color .22s var(--ease), transform .22s var(--ease);
 }
 
-.btn:hover { background: #17403C; transform: translateY(-1px); }
-.btn:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+.btn:hover { background: var(--scrub); border-color: var(--scrub); transform: translateY(-1px); }
+.btn:focus-visible { outline: 2.5px solid var(--scrub); outline-offset: 3px; }
 
-.btn--lg   { padding: .95rem 1.9rem; font-size: 1rem; }
-.btn--sm   { padding: .5rem 1.05rem; font-size: .85rem; }
+.btn--lg   { padding: .95rem 1.9rem; font-size: var(--t-body); }
+.btn--sm   { padding: .55rem 1.1rem; }
 .btn--full { width: 100%; }
 
 .btn--ghost {
@@ -103,7 +144,7 @@ p { margin: 0 0 1rem; }
   color: var(--deep);
   border-color: var(--line);
 }
-.btn--ghost:hover { background: var(--white); border-color: var(--deep); }
+.btn--ghost:hover { background: var(--white); border-color: var(--deep); color: var(--deep); }
 
 /* ---------- Navegación ---------- */
 
@@ -111,8 +152,8 @@ p { margin: 0 0 1rem; }
   position: sticky;
   top: 0;
   z-index: 40;
-  background: rgba(251, 250, 246, .88);
-  backdrop-filter: blur(10px);
+  background: rgba(241, 245, 243, .9);
+  backdrop-filter: blur(12px);
   border-bottom: 1px solid transparent;
   transition: border-color .3s var(--ease);
 }
@@ -122,106 +163,108 @@ p { margin: 0 0 1rem; }
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 74px;
+  height: 76px;
+  gap: 1rem;
 }
 
 .brand {
   display: inline-flex;
   align-items: center;
-  gap: .6rem;
+  gap: .55rem;
   text-decoration: none;
   color: var(--deep);
 }
-.brand__mark { width: 26px; height: 26px; color: var(--gold); }
+.brand__mark { width: 24px; height: 24px; color: var(--scrub); flex: none; }
 .brand__mark svg { width: 100%; height: 100%; }
 
 .brand__text {
   font-family: var(--font-display);
-  font-size: 1.16rem;
-  letter-spacing: .01em;
+  font-size: 1.15rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
 }
-.brand__text em { font-style: italic; color: var(--gold); }
 
 .nav__links {
   display: flex;
   align-items: center;
-  gap: 2rem;
-  font-size: .93rem;
+  gap: 1.9rem;
+  font-size: var(--t-min);
 }
-.nav__links a { text-decoration: none; color: var(--ink-soft); transition: color .2s var(--ease); }
+.nav__links a {
+  text-decoration: none;
+  color: var(--ink-soft);
+  font-weight: 500;
+  transition: color .2s var(--ease);
+}
 .nav__links a:hover { color: var(--deep); }
 .nav__links .btn { color: var(--white); }
+.nav__links .btn:hover { color: var(--white); }
 
 /* ---------- Hero ---------- */
 
-.hero { padding: clamp(64px, 9vw, 116px) 0 clamp(56px, 7vw, 88px); }
+.hero { padding: clamp(56px, 8vw, 104px) 0 clamp(56px, 7vw, 88px); }
 
 .hero__inner {
   display: grid;
-  grid-template-columns: 1.15fr .85fr;
-  gap: clamp(32px, 6vw, 72px);
+  grid-template-columns: 1.1fr .9fr;
+  gap: clamp(32px, 6vw, 76px);
   align-items: center;
 }
 
 .lead {
-  font-size: 1.08rem;
+  font-size: 1.15rem;
   color: var(--ink-soft);
-  max-width: 46ch;
-  margin-top: 1.5rem;
+  max-width: 44ch;
+  margin-top: 1.6rem;
 }
 
 .hero__actions {
   display: flex;
   flex-wrap: wrap;
   gap: .8rem;
-  margin-top: 2rem;
+  margin-top: 2.1rem;
 }
 
 .hero__trust {
   display: flex;
   flex-wrap: wrap;
-  gap: 2.2rem;
+  gap: 2.4rem;
   list-style: none;
-  padding: 0;
-  margin: 3rem 0 0;
+  padding: 1.6rem 0 0;
+  margin: 2.8rem 0 0;
   border-top: 1px solid var(--line);
-  padding-top: 1.5rem;
-  font-size: .87rem;
+  font-size: var(--t-min);
   color: var(--ink-soft);
 }
+.hero__trust li { max-width: 16ch; }
 .hero__trust strong {
   display: block;
-  font-family: var(--font-display);
-  font-size: 1.45rem;
+  font-family: var(--font-mono);
+  font-size: 1.7rem;
   font-weight: 500;
-  color: var(--deep);
-  line-height: 1.2;
+  color: var(--scrub);
+  line-height: 1.15;
+  margin-bottom: .15rem;
 }
 
 .hero__visual {
   margin: 0;
   width: 100%;
-  max-width: 440px;
+  max-width: 430px;
   justify-self: end;
-  display: flex;
-  flex-direction: column;
 }
 
 .hero__img {
-  display: block;
   width: 100%;
-  /* Imprescindible: sin esto el atributo height="1500" del <img> fija el
-     alto y aspect-ratio no llega a aplicarse. */
   height: auto;
   aspect-ratio: 4 / 5;
   object-fit: cover;
   border-radius: var(--radius) var(--radius) 0 0;
-  /* Color de respaldo mientras la foto carga */
-  background: var(--deep);
+  background: var(--scrub-pale);
 }
 
-/* Va pegada bajo la foto, no encima: el encuadre no tiene ninguna zona
-   libre lo bastante grande y la tarjeta acababa tapando cara o manos. */
+/* La tarjeta va pegada bajo la foto, no encima: el encuadre no tiene
+   ninguna zona libre lo bastante grande y acababa tapando cara o manos. */
 .hero__card {
   background: var(--deep);
   color: var(--white);
@@ -229,54 +272,186 @@ p { margin: 0 0 1rem; }
   padding: 1.5rem 1.6rem;
 }
 .hero__card-label {
-  font-size: .74rem;
-  letter-spacing: .18em;
+  font-family: var(--font-mono);
+  font-size: var(--t-min);
+  letter-spacing: .08em;
   text-transform: uppercase;
-  color: rgba(255,255,255,.55);
-  margin-bottom: .4rem;
+  color: var(--scrub-pale);
+  margin-bottom: .35rem;
 }
 .hero__card-value {
   font-family: var(--font-display);
-  font-size: 1.7rem;
-  margin: 0;
-}
-.hero__card-line {
-  height: 1px;
-  background: rgba(255,255,255,.18);
-  margin: 1.1rem 0;
+  font-size: 1.85rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  margin: 0 0 .8rem;
 }
 .hero__card-note {
-  font-size: .88rem;
-  color: rgba(255,255,255,.7);
+  font-size: var(--t-min);
+  line-height: 1.5;
+  color: rgba(255, 255, 255, .8);
+  margin: 0;
+  padding-top: .8rem;
+  border-top: 1px solid rgba(255, 255, 255, .18);
+}
+
+/* ---------- Secciones ----------
+   .section fija el espaciado. Los modificadores solo cambian
+   color y bordes, nunca padding, para que no se cancelen. */
+
+.section { padding: clamp(64px, 8vw, 108px) 0; }
+.section--alt  { background: var(--white); border-block: 1px solid var(--line); }
+.section--deep { background: var(--deep); color: var(--white); }
+
+.section__head { margin-bottom: 3.2rem; max-width: 46ch; }
+.section__sub {
+  color: var(--ink-soft);
+  margin-top: 1.1rem;
+  max-width: 44ch;
+}
+
+/* ---------- Firma: el presupuesto ---------- */
+
+.presu__inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(36px, 6vw, 84px);
+  align-items: center;
+}
+.presu__copy p { color: var(--ink-soft); max-width: 42ch; margin-top: 1.4rem; }
+
+.doc {
+  position: relative;
+  margin: 0;
+  background: var(--bone);
+  border-radius: var(--radius);
+  padding: clamp(28px, 3.5vw, 44px) clamp(24px, 3vw, 40px) clamp(24px, 3vw, 36px);
+  box-shadow:
+    0 1px 2px rgba(6, 42, 37, .10),
+    0 18px 40px -16px rgba(6, 42, 37, .28);
+}
+
+.doc__head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  padding-bottom: 1rem;
+  border-bottom: 1.5px solid rgba(10, 31, 27, .25);
+}
+.doc__brand {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  margin: 0;
+}
+.doc__meta {
+  font-family: var(--font-mono);
+  font-size: var(--t-min);
+  color: var(--ink-soft);
   margin: 0;
 }
 
-/* ---------- Pilares ---------- */
-
-.pillars {
-  border-top: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
-  padding: clamp(40px, 5vw, 64px) 0;
-  background: var(--bg-alt);
+.doc__case {
+  font-family: var(--font-mono);
+  font-size: var(--t-min);
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  color: var(--ink);
+  margin: 1.3rem 0 .5rem;
 }
 
-.grid-3 {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: clamp(24px, 4vw, 56px);
+.doc__items { list-style: none; padding: 0; margin: 0; }
+
+.doc__item {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1.5rem;
+  padding: .85rem 0;
+  border-bottom: 1px dotted rgba(10, 31, 27, .3);
 }
 
-.pillar h3 { margin-bottom: .5rem; }
-.pillar p { color: var(--ink-soft); font-size: .95rem; margin: 0; }
+.doc__desc { font-size: var(--t-min); line-height: 1.45; }
+.doc__mult { font-family: var(--font-mono); font-size: inherit; color: var(--ink-soft); }
 
-/* ---------- Secciones ---------- */
+.doc__price {
+  font-family: var(--font-mono);
+  font-size: var(--t-min);
+  font-weight: 500;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+.doc__price--free { color: var(--scrub); }
 
-.section { padding: clamp(64px, 8vw, 104px) 0; }
-.section--alt { background: var(--bg-alt); }
+.doc__total {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1.5rem;
+  margin-top: 1.2rem;
+  padding-top: 1.1rem;
+  border-top: 1.5px solid rgba(10, 31, 27, .25);
+}
+.doc__total-label {
+  font-family: var(--font-mono);
+  font-size: var(--t-min);
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+.doc__total-value {
+  font-family: var(--font-display);
+  font-size: clamp(1.9rem, 3.6vw, 2.5rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+}
+.doc__total-value small {
+  font-family: var(--font-mono);
+  font-size: var(--t-min);
+  font-weight: 400;
+  letter-spacing: 0;
+  color: var(--ink-soft);
+  margin-left: .3rem;
+}
 
-.section__head { margin-bottom: 3rem; max-width: 40ch; }
+/* El sello: la promesa de la marca convertida en objeto físico.
+   Es el único adorno de la página, y le toca a la pieza firma. */
+.doc__stamp {
+  /* En flujo, no absoluto: en absoluto pisaba el total y el pie en
+     cuanto cambiaba el largo de una partida. Va donde se sella una
+     factura de verdad, bajo el total y a la derecha. */
+  display: block;
+  width: fit-content;
+  margin: 1.6rem .25rem 0 auto;
+  font-family: var(--font-mono);
+  font-size: var(--t-min);
+  font-weight: 500;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--scrub);
+  border: 2px solid var(--scrub);
+  border-radius: 2px;
+  padding: .4rem .7rem;
+  /* La inclinación es una variable para que el móvil la ajuste en un
+     solo sitio, sin duplicar las reglas de animación. */
+  --rot: -5deg;
+  transform: rotate(var(--rot));
+  opacity: .9;
+}
 
-/* Servicios */
+.doc__foot {
+  font-size: var(--t-min);
+  line-height: 1.5;
+  color: var(--ink-soft);
+  margin-top: 1.4rem;
+  max-width: 34ch;
+}
+
+/* ---------- Servicios ---------- */
 
 .services {
   list-style: none;
@@ -284,25 +459,39 @@ p { margin: 0 0 1rem; }
   margin: 0;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  border-top: 1px solid var(--line);
+  gap: 1px;
+  background: var(--line);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
 }
 .services li {
-  padding: 2rem 1.75rem 2rem 0;
-  border-bottom: 1px solid var(--line);
-  position: relative;
+  display: flex;
+  flex-direction: column;
+  background: var(--white);
+  padding: 1.9rem 1.75rem 1.6rem;
+  transition: background .22s var(--ease);
 }
-.services li span {
-  font-family: var(--font-display);
-  font-size: .8rem;
-  color: var(--gold);
-  letter-spacing: .1em;
-  display: block;
-  margin-bottom: .75rem;
-}
-.services li h3 { margin-bottom: .35rem; }
-.services li p { color: var(--ink-soft); font-size: .93rem; margin: 0; }
+.services li:hover { background: var(--porcelain); }
 
-/* Split (clínica + cita) */
+.services li h3 { margin-bottom: .45rem; }
+.services li p { color: var(--ink-soft); font-size: var(--t-min); margin: 0; }
+
+/* La duración es el dato que decide si agendas o no, así que
+   va marcado, no escondido. Sustituye a la numeración 01–06,
+   que fingía una secuencia donde solo hay un menú. */
+.services__dur {
+  font-family: var(--font-mono);
+  font-size: var(--t-min);
+  color: var(--scrub);
+  margin-top: auto;
+  padding-top: 1.4rem;
+}
+.services__urgent { background: var(--scrub-pale); }
+.services__urgent:hover { background: var(--scrub-pale); }
+.services__urgent .services__dur { color: var(--deep); font-weight: 500; }
+
+/* ---------- Split (clínica + cita) ---------- */
 
 .split {
   display: grid;
@@ -310,29 +499,30 @@ p { margin: 0 0 1rem; }
   gap: clamp(32px, 6vw, 80px);
   align-items: start;
 }
-.split__copy p { color: var(--ink-soft); max-width: 42ch; margin-top: 1.5rem; }
+.split__copy p { color: var(--ink-soft); max-width: 42ch; margin-top: 1.4rem; }
 
 .checklist {
   list-style: none;
   padding: 0;
   margin: 2rem 0 0;
-  font-size: .95rem;
+  font-size: var(--t-min);
 }
 .checklist li {
   position: relative;
-  padding-left: 1.6rem;
-  margin-bottom: .7rem;
+  padding-left: 1.7rem;
+  margin-bottom: .75rem;
   color: var(--ink-soft);
+  line-height: 1.5;
 }
 .checklist li::before {
   content: "";
   position: absolute;
   left: 0;
-  top: .62em;
-  width: 8px;
-  height: 8px;
-  border-left: 1.5px solid var(--gold);
-  border-bottom: 1.5px solid var(--gold);
+  top: .48em;
+  width: 9px;
+  height: 5px;
+  border-left: 2px solid var(--scrub);
+  border-bottom: 2px solid var(--scrub);
   transform: rotate(-45deg);
 }
 
@@ -340,46 +530,59 @@ p { margin: 0 0 1rem; }
   margin: 0;
   background: var(--white);
   border: 1px solid var(--line);
+  border-left: 3px solid var(--scrub);
   border-radius: var(--radius);
-  padding: 2.5rem 2.25rem;
+  padding: clamp(28px, 3.5vw, 44px) clamp(24px, 3vw, 40px);
 }
 .quote blockquote {
-  margin: 0 0 1.25rem;
+  margin: 0 0 1.4rem;
   font-family: var(--font-display);
-  font-size: 1.25rem;
-  line-height: 1.5;
-  color: var(--deep);
+  font-size: clamp(1.3rem, 2.2vw, 1.55rem);
+  font-weight: 400;
+  line-height: 1.35;
+  letter-spacing: -0.015em;
+  color: var(--ink);
 }
-.quote figcaption { font-size: .85rem; color: var(--ink-soft); }
+.quote blockquote::before { content: "«"; color: var(--scrub); }
+.quote blockquote::after  { content: "»"; color: var(--scrub); }
+.quote figcaption {
+  font-family: var(--font-mono);
+  font-size: var(--t-min);
+  color: var(--ink-soft);
+}
 
 /* ---------- Cita / formulario ---------- */
 
-.booking { border-top: 1px solid var(--line); }
-.split--form { align-items: start; }
+.booking__copy p { color: rgba(255, 255, 255, .78); max-width: 40ch; margin-top: 1.4rem; }
+.booking .eyebrow { color: var(--scrub-pale); }
 
-.booking__copy p { color: var(--ink-soft); max-width: 40ch; margin-top: 1.5rem; }
-
-.info { margin: 2.5rem 0 0; font-size: .93rem; }
+.info { margin: 2.4rem 0 0; font-size: var(--t-min); }
 .info > div {
   display: grid;
-  grid-template-columns: 110px 1fr;
+  grid-template-columns: 120px 1fr;
   gap: 1rem;
-  padding: .85rem 0;
-  border-top: 1px solid var(--line);
+  padding: .9rem 0;
+  border-top: 1px solid rgba(255, 255, 255, .16);
 }
-.info dt { color: var(--ink-soft); font-size: .8rem; text-transform: uppercase; letter-spacing: .1em; padding-top: .15rem; }
-.info dd { margin: 0; }
-.info a { text-decoration: none; border-bottom: 1px solid var(--gold); }
+.info dt {
+  font-family: var(--font-mono);
+  color: var(--scrub-pale);
+  text-transform: uppercase;
+  letter-spacing: .06em;
+}
+.info dd { margin: 0; color: rgba(255, 255, 255, .9); }
+.info a { text-decoration: none; border-bottom: 1px solid var(--scrub-pale); }
+.info a:hover { border-bottom-color: var(--white); }
 
 .form {
-  background: var(--white);
-  border: 1px solid var(--line);
+  background: var(--porcelain);
+  color: var(--ink);
   border-radius: var(--radius);
-  padding: clamp(24px, 3vw, 36px);
+  padding: clamp(24px, 3vw, 38px);
   position: relative;
 }
 
-.field { margin-bottom: 1.15rem; }
+.field { margin-bottom: 1.2rem; }
 .field-row {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -388,8 +591,8 @@ p { margin: 0 0 1rem; }
 
 label {
   display: block;
-  font-size: .84rem;
-  font-weight: 500;
+  font-size: var(--t-min);
+  font-weight: 600;
   margin-bottom: .4rem;
   color: var(--ink);
 }
@@ -398,45 +601,47 @@ label .opt { color: var(--ink-soft); font-weight: 400; }
 input, select, textarea {
   width: 100%;
   font-family: var(--font-body);
-  font-size: .95rem;
+  font-size: var(--t-min);
   color: var(--ink);
-  background: var(--bg);
-  border: 1px solid var(--line);
+  background: var(--white);
+  border: 1.5px solid var(--line);
   border-radius: var(--radius);
-  padding: .7rem .85rem;
-  transition: border-color .2s var(--ease), background .2s var(--ease);
+  padding: .72rem .85rem;
+  transition: border-color .2s var(--ease), box-shadow .2s var(--ease);
 }
 textarea { resize: vertical; }
 
 input:focus, select:focus, textarea:focus {
   outline: none;
-  border-color: var(--deep);
-  background: var(--white);
+  border-color: var(--scrub);
+  box-shadow: 0 0 0 3px var(--scrub-pale);
 }
 
-input.is-invalid, select.is-invalid { border-color: #B4453C; }
+input.is-invalid, select.is-invalid { border-color: var(--alert); }
 
 .error {
   display: block;
-  min-height: 1rem;
-  font-size: .78rem;
-  color: #B4453C;
+  min-height: 1.2rem;
+  font-size: var(--t-min);
+  line-height: 1.3;
+  color: var(--alert);
   margin-top: .3rem;
 }
 
-.form button { margin-top: .5rem; }
+.form button { margin-top: .6rem; }
 
 .form__note {
-  font-size: .78rem;
+  font-size: var(--t-min);
+  line-height: 1.45;
   color: var(--ink-soft);
   text-align: center;
-  margin: .9rem 0 0;
+  margin: 1rem 0 0;
 }
 
 .form__success {
   position: absolute;
   inset: 0;
-  background: var(--white);
+  background: var(--porcelain);
   border-radius: var(--radius);
   display: flex;
   flex-direction: column;
@@ -447,8 +652,8 @@ input.is-invalid, select.is-invalid { border-color: #B4453C; }
   animation: fade .4s var(--ease);
 }
 .form__success[hidden] { display: none; }
-.form__success h3 { font-size: 1.5rem; margin-bottom: .6rem; }
-.form__success p { color: var(--ink-soft); max-width: 32ch; }
+.form__success h3 { font-size: 1.6rem; margin-bottom: .7rem; }
+.form__success p { color: var(--ink-soft); max-width: 32ch; margin: 0; }
 
 @keyframes fade { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
 
@@ -456,14 +661,17 @@ input.is-invalid, select.is-invalid { border-color: #B4453C; }
 
 .footer {
   background: var(--deep);
-  color: rgba(255,255,255,.72);
-  padding: 3rem 0;
-  font-size: .9rem;
+  color: rgba(255, 255, 255, .72);
+  border-top: 1px solid rgba(255, 255, 255, .12);
+  padding: 3.2rem 0;
+  font-size: var(--t-min);
 }
 .footer__inner { text-align: center; }
-.footer .brand__text { color: var(--white); display: block; margin-bottom: .9rem; }
-.footer p { margin: 0 0 .35rem; }
-.footer__legal { font-size: .8rem; color: rgba(255,255,255,.45); margin-top: 1rem; }
+.footer .brand__text { color: var(--white); display: block; margin-bottom: 1rem; }
+.footer p { margin: 0 0 .4rem; }
+/* El aviso legal va al mismo tamaño que todo lo demás.
+   Es una marca que vende «cero letra pequeña». */
+.footer__legal { color: rgba(255, 255, 255, .55); margin-top: 1.1rem; }
 
 /* ---------- CTA flotante (móvil) ---------- */
 
@@ -474,37 +682,65 @@ input.is-invalid, select.is-invalid { border-color: #B4453C; }
   right: 16px;
   bottom: 16px;
   z-index: 50;
-  background: var(--deep);
+  background: var(--scrub);
   color: var(--white);
   text-align: center;
   text-decoration: none;
   padding: .95rem;
   border-radius: var(--radius);
-  font-size: .95rem;
-  font-weight: 500;
-  box-shadow: 0 8px 24px rgba(15,43,41,.22);
+  font-size: var(--t-body);
+  font-weight: 600;
+  box-shadow: 0 8px 26px rgba(6, 42, 37, .3);
 }
+
+/* ---------- Revelado del presupuesto ----------
+   Un único momento orquestado: las partidas entran escalonadas
+   y el total cierra la secuencia. Nada más se anima en la página. */
+
+/* El estado oculto vive tras .is-armed, que solo añade el JS.
+   Sin JavaScript no hay nada que ocultar y el documento se ve entero. */
+.doc [data-reveal] {
+  transition: opacity .5s var(--ease), transform .5s var(--ease);
+  transition-delay: var(--d, 0ms);
+}
+.doc.is-armed [data-reveal] {
+  opacity: 0;
+  transform: translateY(10px);
+}
+.doc.is-revealed [data-reveal] { opacity: 1; transform: none; }
+
+.doc__stamp {
+  transition: opacity .3s var(--ease), transform .3s var(--ease);
+  transition-delay: var(--d, 0ms);
+}
+.doc.is-armed .doc__stamp {
+  opacity: 0;
+  transform: rotate(var(--rot)) scale(1.35);
+}
+.doc.is-revealed .doc__stamp { opacity: .9; transform: rotate(var(--rot)) scale(1); }
 
 /* ---------- Responsive ---------- */
 
-@media (max-width: 900px) {
-  .hero__inner { grid-template-columns: 1fr; }
+@media (max-width: 960px) {
+  .hero__inner  { grid-template-columns: 1fr; }
   .hero__visual { max-width: 100%; justify-self: stretch; }
-  .hero__img { aspect-ratio: 3 / 2; object-position: center 35%; }
-  .grid-3 { grid-template-columns: 1fr; gap: 2rem; }
-  .services { grid-template-columns: repeat(2, 1fr); }
-  .split { grid-template-columns: 1fr; }
+  .hero__img    { aspect-ratio: 3 / 2; object-position: center 32%; }
+  .presu__inner { grid-template-columns: 1fr; }
+  .services     { grid-template-columns: repeat(2, 1fr); }
+  .split        { grid-template-columns: 1fr; }
 }
 
-@media (max-width: 620px) {
-  body { font-size: 16px; }
+@media (max-width: 640px) {
+  body { font-size: 1rem; }
   .nav__links a:not(.btn) { display: none; }
   .services { grid-template-columns: 1fr; }
-  .services li { padding-right: 0; }
   .field-row { grid-template-columns: 1fr; gap: 0; }
   .hero__img { aspect-ratio: 4 / 3; }
   .hero__card { padding: 1.3rem 1.35rem; }
-  .hero__trust { gap: 1.5rem; }
+  .hero__trust { gap: 1.6rem; }
+  .info > div { grid-template-columns: 1fr; gap: .2rem; }
+  /* En móvil el sello pasa a la izquierda, alineado con el resto. */
+  .doc__stamp { --rot: -3deg; margin-right: auto; margin-left: .25rem; }
   .cta-float { display: block; }
   .footer { padding-bottom: 5.5rem; }
 }
@@ -512,4 +748,10 @@ input.is-invalid, select.is-invalid { border-color: #B4453C; }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   * { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+  /* Sin movimiento el presupuesto se muestra completo desde el principio:
+     el revelado es un adorno, no información. */
+  .doc.is-armed [data-reveal],
+  .doc.is-revealed [data-reveal] { opacity: 1; transform: none; }
+  .doc.is-armed .doc__stamp,
+  .doc.is-revealed .doc__stamp { opacity: .9; transform: rotate(var(--rot)); }
 }

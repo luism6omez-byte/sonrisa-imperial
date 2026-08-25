@@ -14,6 +14,35 @@ function iniciar() {
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
 
+  /* Revelado escalonado del presupuesto.
+     Los atributos se ponen desde aquí a propósito: si no hay JS,
+     el documento se ve completo en vez de quedarse invisible. */
+  var doc = document.getElementById('doc');
+  if (doc && 'IntersectionObserver' in window) {
+    var piezas = doc.querySelectorAll('.doc__case, .doc__item, .doc__total, .doc__foot');
+    var paso = 90;
+
+    Array.prototype.forEach.call(piezas, function (pieza, i) {
+      pieza.setAttribute('data-reveal', '');
+      pieza.style.setProperty('--d', (i * paso) + 'ms');
+    });
+
+    var sello = doc.querySelector('.doc__stamp');
+    if (sello) sello.style.setProperty('--d', (piezas.length * paso + 220) + 'ms');
+
+    doc.classList.add('is-armed');
+
+    var observador = new IntersectionObserver(function (entradas) {
+      entradas.forEach(function (entrada) {
+        if (!entrada.isIntersecting) return;
+        doc.classList.add('is-revealed');
+        observador.disconnect();
+      });
+    }, { threshold: 0.25 });
+
+    observador.observe(doc);
+  }
+
   /* Fecha mínima = hoy */
   var fecha = document.getElementById('fecha');
   if (fecha) {

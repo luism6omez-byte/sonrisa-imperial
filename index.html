@@ -4,25 +4,28 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Sonrisa Imperial — Clínica Dental</title>
-  <meta name="description" content="Clínica dental Sonrisa Imperial. Agenda tu cita de valoración y recibe un plan de tratamiento claro, sin sorpresas." />
+  <meta name="description" content="Clínica dental en CDMX. Valoración con diagnóstico, radiografía y presupuesto cerrado por escrito antes de empezar cualquier tratamiento." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,400;12..96,75..100,600;12..96,75..100,700&family=IBM+Plex+Mono:wght@400;500&family=Public+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
+
+  <a class="skip" href="#top">Saltar al contenido</a>
 
   <header class="nav" id="nav">
     <div class="container nav__inner">
       <a class="brand" href="#top">
         <span class="brand__mark" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
             <path d="M12 4c-1.6-1-3.4-1.2-4.8-.5C5.3 4.4 4.5 6.6 4.8 9c.3 2.3.9 3.6 1.4 5.6.4 1.7.6 3.6 1.5 4.6.9 1 2.2.5 2.6-1 .3-1.2.4-2.6 1.7-2.6s1.4 1.4 1.7 2.6c.4 1.5 1.7 2 2.6 1 .9-1 1.1-2.9 1.5-4.6.5-2 1.1-3.3 1.4-5.6.3-2.4-.5-4.6-2.4-5.5C15.4 2.8 13.6 3 12 4Z"/>
           </svg>
         </span>
-        <span class="brand__text">Sonrisa <em>Imperial</em></span>
+        <span class="brand__text">Sonrisa Imperial</span>
       </a>
       <nav class="nav__links" aria-label="Navegación principal">
+        <a href="#presupuesto">Precios</a>
         <a href="#servicios">Servicios</a>
         <a href="#clinica">La clínica</a>
         <a href="#cita" class="btn btn--sm">Agendar cita</a>
@@ -36,22 +39,23 @@
     <section class="hero">
       <div class="container hero__inner">
         <div class="hero__copy">
-          <p class="eyebrow">Odontología integral</p>
-          <h1>Una sonrisa que se cuida<br /><em>se nota toda la vida.</em></h1>
+          <p class="eyebrow">Odontología integral · CDMX</p>
+          <h1>Sabrás qué necesitas y cuánto cuesta <em>antes de sentarte en la silla.</em></h1>
           <p class="lead">
-            Valoración con diagnóstico y plan de tratamiento explicado con claridad,
-            sin tecnicismos y sin compromiso. Agenda en menos de un minuto.
+            La valoración incluye diagnóstico, radiografía y un presupuesto cerrado por escrito.
+            Si algo puede esperar, te lo decimos. Si prefieres no continuar, ahí queda.
           </p>
           <div class="hero__actions">
-            <a href="#cita" class="btn btn--lg">Agendar mi cita</a>
+            <a href="#cita" class="btn btn--lg">Agendar valoración</a>
             <a href="tel:+525500000000" class="btn btn--ghost btn--lg">Llamar ahora</a>
           </div>
           <ul class="hero__trust">
-            <li><strong>+12</strong> años de experiencia</li>
-            <li><strong>4.9</strong> ★ valoración de pacientes</li>
-            <li><strong>0%</strong> letra pequeña</li>
+            <li><strong>12</strong> años atendiendo en Reforma</li>
+            <li><strong>4.9</strong> de valoración de pacientes</li>
+            <li><strong>0</strong> cargos fuera del presupuesto</li>
           </ul>
         </div>
+
         <figure class="hero__visual">
           <img
             class="hero__img"
@@ -65,69 +69,140 @@
           <figcaption class="hero__card">
             <p class="hero__card-label">Próxima disponibilidad</p>
             <p class="hero__card-value">Hoy · 17:30</p>
-            <div class="hero__card-line"></div>
-            <p class="hero__card-note">Confirmamos tu cita por WhatsApp en menos de 2 horas hábiles.</p>
+            <p class="hero__card-note">Confirmamos por WhatsApp en menos de 2 horas hábiles.</p>
           </figcaption>
         </figure>
       </div>
     </section>
 
-    <!-- PILARES -->
-    <section class="pillars">
-      <div class="container grid-3">
-        <article class="pillar">
-          <h3>Diagnóstico claro</h3>
-          <p>Te explicamos qué necesitas, qué puede esperar y qué no es urgente. Decides con información.</p>
-        </article>
-        <article class="pillar">
-          <h3>Precios cerrados</h3>
-          <p>Presupuesto por escrito antes de empezar. Sin cargos que aparecen a mitad del tratamiento.</p>
-        </article>
-        <article class="pillar">
-          <h3>Trato sin prisas</h3>
-          <p>Citas con tiempo real asignado. Nadie sale de aquí con dudas ni con la agenda encima.</p>
-        </article>
+    <!-- FIRMA: EL PRESUPUESTO -->
+    <section class="section presu" id="presupuesto">
+      <div class="container presu__inner">
+        <div class="presu__copy">
+          <p class="eyebrow">Precio cerrado</p>
+          <h2>Así se ve tu presupuesto, antes de decir que sí.</h2>
+          <p>
+            Al terminar la valoración te lo entregamos impreso y por WhatsApp. Ese es el precio
+            que pagas. Si durante el tratamiento apareciera algo distinto, se detiene y lo
+            autorizas tú antes de continuar.
+          </p>
+          <ul class="checklist">
+            <li>La valoración y la radiografía no se cobran</li>
+            <li>Puedes llevártelo y pedir una segunda opinión</li>
+            <li>Meses sin intereses con tarjetas participantes</li>
+          </ul>
+        </div>
+
+        <figure class="doc" id="doc">
+          <div class="doc__head">
+            <p class="doc__brand">Sonrisa Imperial</p>
+            <p class="doc__meta">Presupuesto · Ejemplo</p>
+          </div>
+
+          <p class="doc__case">Ortodoncia con brackets metálicos</p>
+
+          <ul class="doc__items">
+            <li class="doc__item">
+              <span class="doc__desc">Valoración, radiografía y estudio</span>
+              <span class="doc__price doc__price--free">Incluido</span>
+            </li>
+            <li class="doc__item">
+              <span class="doc__desc">Colocación de brackets, arriba y abajo</span>
+              <span class="doc__price">$540</span>
+            </li>
+            <li class="doc__item">
+              <span class="doc__desc">Ajustes mensuales <small class="doc__mult">× 18</small></span>
+              <span class="doc__price">$1,080</span>
+            </li>
+            <li class="doc__item">
+              <span class="doc__desc">Retenedores al finalizar</span>
+              <span class="doc__price">$130</span>
+            </li>
+          </ul>
+
+          <div class="doc__total">
+            <span class="doc__total-label">Total</span>
+            <span class="doc__total-value">$1,750 <small>USD</small></span>
+          </div>
+
+          <p class="doc__stamp" aria-hidden="true">Este total no cambia</p>
+
+          <figcaption class="doc__foot">
+            Ejemplo con precios de referencia. El tuyo se calcula en tu valoración.
+          </figcaption>
+        </figure>
       </div>
     </section>
 
     <!-- SERVICIOS -->
-    <section class="section" id="servicios">
+    <section class="section section--alt" id="servicios">
       <div class="container">
         <div class="section__head">
           <p class="eyebrow">Servicios</p>
           <h2>Lo que resolvemos</h2>
+          <p class="section__sub">
+            Cada tratamiento indica cuánto suele durar, para que sepas a qué te comprometes
+            antes de agendar.
+          </p>
         </div>
+
         <ul class="services">
-          <li><span>01</span><h3>Limpieza y prevención</h3><p>Profilaxis, control de sarro y revisión periódica.</p></li>
-          <li><span>02</span><h3>Ortodoncia</h3><p>Brackets y alineadores transparentes con seguimiento cercano.</p></li>
-          <li><span>03</span><h3>Estética dental</h3><p>Blanqueamiento, carillas y diseño de sonrisa.</p></li>
-          <li><span>04</span><h3>Implantes</h3><p>Reposición de piezas con planificación digital.</p></li>
-          <li><span>05</span><h3>Endodoncia</h3><p>Tratamiento de conducto con anestesia bien manejada.</p></li>
-          <li><span>06</span><h3>Urgencias</h3><p>Dolor, fractura o inflamación: atención el mismo día.</p></li>
+          <li>
+            <h3>Limpieza y prevención</h3>
+            <p>Profilaxis, control de sarro y revisión periódica.</p>
+            <p class="services__dur">1 visita</p>
+          </li>
+          <li>
+            <h3>Ortodoncia</h3>
+            <p>Brackets y alineadores transparentes con seguimiento cercano.</p>
+            <p class="services__dur">Plan de 12 a 24 meses</p>
+          </li>
+          <li>
+            <h3>Estética dental</h3>
+            <p>Blanqueamiento, carillas y diseño de sonrisa.</p>
+            <p class="services__dur">De 1 a 3 visitas</p>
+          </li>
+          <li>
+            <h3>Implantes</h3>
+            <p>Reposición de piezas con planificación digital.</p>
+            <p class="services__dur">Plan de 3 a 6 meses</p>
+          </li>
+          <li>
+            <h3>Endodoncia</h3>
+            <p>Tratamiento de conducto con anestesia bien manejada.</p>
+            <p class="services__dur">De 1 a 2 visitas</p>
+          </li>
+          <li class="services__urgent">
+            <h3>Urgencias</h3>
+            <p>Dolor, fractura o inflamación.</p>
+            <p class="services__dur">El mismo día</p>
+          </li>
         </ul>
       </div>
     </section>
 
     <!-- CLÍNICA / PRUEBA SOCIAL -->
-    <section class="section section--alt" id="clinica">
+    <section class="section" id="clinica">
       <div class="container split">
         <div class="split__copy">
           <p class="eyebrow">La clínica</p>
-          <h2>Un equipo pequeño,<br /><em>atención grande.</em></h2>
+          <h2>Un equipo pequeño, atención larga.</h2>
           <p>
             Sonrisa Imperial nació con una idea simple: que ir al dentista deje de dar pereza.
             Consultorios tranquilos, materiales de primera y un equipo que te llama por tu nombre.
           </p>
           <ul class="checklist">
+            <li>Citas con tiempo real asignado, sin encimarte la agenda</li>
+            <li>Te explicamos qué es urgente y qué puede esperar</li>
             <li>Esterilización certificada en cada instrumento</li>
             <li>Radiografía digital de baja radiación</li>
-            <li>Planes de pago a meses sin intereses</li>
           </ul>
         </div>
+
         <figure class="quote">
           <blockquote>
-            «Llegué por una urgencia y me quedé como paciente. Es la primera vez que entiendo
-            exactamente qué me están haciendo y cuánto voy a pagar.»
+            Llegué por una urgencia y me quedé como paciente. Es la primera vez que entiendo
+            exactamente qué me están haciendo y cuánto voy a pagar.
           </blockquote>
           <figcaption>María G. — paciente desde 2022</figcaption>
         </figure>
@@ -135,14 +210,14 @@
     </section>
 
     <!-- CITA -->
-    <section class="section booking" id="cita">
+    <section class="section section--deep booking" id="cita">
       <div class="container split split--form">
         <div class="booking__copy">
           <p class="eyebrow">Agenda tu cita</p>
           <h2>Reserva tu valoración</h2>
           <p>
             Déjanos tus datos y te confirmamos por WhatsApp el horario disponible más cercano.
-            Sin pagos por adelantado.
+            No se paga nada por adelantado.
           </p>
           <dl class="info">
             <div><dt>Dirección</dt><dd>Av. Reforma 128, Piso 2 · Ciudad de México</dd></div>
@@ -201,7 +276,7 @@
           <p class="form__note">Al enviar aceptas que te contactemos para confirmar tu cita.</p>
 
           <div class="form__success" id="form-success" role="status" hidden>
-            <h3>¡Solicitud enviada!</h3>
+            <h3>Solicitud enviada</h3>
             <p>Gracias, <span id="success-nombre">paciente</span>. Te escribimos por WhatsApp para confirmar el horario.</p>
           </div>
         </form>
@@ -211,8 +286,8 @@
 
   <footer class="footer">
     <div class="container footer__inner">
-      <span class="brand__text">Sonrisa <em>Imperial</em></span>
-      <p>Av. Reforma 128, Piso 2 · CDMX · +52 55 0000 0000</p>
+      <span class="brand__text">Sonrisa Imperial</span>
+      <p>Av. Reforma 128, Piso 2 · Ciudad de México · +52 55 0000 0000</p>
       <p class="footer__legal">© <span id="year">2026</span> Sonrisa Imperial. Todos los derechos reservados.</p>
     </div>
   </footer>
