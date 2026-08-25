@@ -210,6 +210,9 @@ p { margin: 0 0 1rem; }
 .hero__img {
   display: block;
   width: 100%;
+  /* Imprescindible: sin esto el atributo height="1500" del <img> fija el
+     alto y aspect-ratio no llega a aplicarse. */
+  height: auto;
   aspect-ratio: 4 / 5;
   object-fit: cover;
   border-radius: var(--radius) var(--radius) 0 0;
